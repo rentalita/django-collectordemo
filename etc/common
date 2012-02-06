@@ -1,0 +1,108 @@
+PACKAGE="python-django-collectordemo"
+export PACKAGE
+
+VERSION="0.0.1"
+export VERSION
+
+SQLITE3=$(which sqlite3)
+export SQLITE3
+
+SQLITE3FLAGS=
+export SQLITE3FLAGS
+
+PYTHON="$(which python)"
+export PYTHON
+
+PYTHONFLAGS="-tt"
+
+if [ ! "${COLLECTORDEMO_DEBUG}" = "" ]; then
+    PYTHONFLAGS="${PYTHONFLAGS} -m pdb"
+fi
+
+export PYTHONFLAGS
+
+PYLINT="$(which pylint)"
+export PYLINT
+
+PYLINTFLAGS=
+export PYLINTFLAGS
+
+NOSETESTS="$(which nosetests)"
+export NOSETESTS
+
+NOSETESTSFLAGS="--with-coverage --cover-erase --cover-html"
+export NOSETESTSFLAGS
+
+DJANGO_SETTINGS_MODULE="collectordemo.settings"
+
+if [ ! "${COLLECTORDEMO_TESTS}" = "" ]; then
+    DJANGO_SETTINGS_MODULE="collectordemo.tests.settings"
+fi
+
+export DJANGO_SETTINGS_MODULE
+
+COLLECTORDEMO_HOME=$(cd "${COLLECTORDEMO_HOME}"; pwd)
+export COLLECTORDEMO_HOME
+
+COLLECTORDEMO_BIN="${COLLECTORDEMO_HOME}"/bin
+export COLLECTORDEMO_BIN
+
+COLLECTORDEMO_ETC="${COLLECTORDEMO_HOME}"/etc
+export COLLECTORDEMO_ETC
+
+COLLECTORDEMO_LIB="${COLLECTORDEMO_HOME}"/lib
+export COLLECTORDEMO_LIB
+
+COLLECTORDEMO_SRC="${COLLECTORDEMO_HOME}"/src
+export COLLECTORDEMO_SRC
+
+COLLECTORDEMO_VAR="${COLLECTORDEMO_HOME}"/var
+export COLLECTORDEMO_VAR
+
+COLLECTORDEMO_CACHE="${COLLECTORDEMO_VAR}"/cache
+export COLLECTORDEMO_CACHE
+
+COLLECTORDEMO_DATA="${COLLECTORDEMO_VAR}"/data
+export COLLECTORDEMO_DATA
+
+COLLECTORDEMO_DB="${COLLECTORDEMO_VAR}"/db
+export COLLECTORDEMO_DB
+
+COLLECTORDEMO_LOG="${COLLECTORDEMO_VAR}"/log
+export COLLECTORDEMO_LOG
+
+COLLECTORDEMO_RUN="${COLLECTORDEMO_VAR}"/run
+export COLLECTORDEMO_RUN
+
+COLLECTORDEMO_WWW="${COLLECTORDEMO_VAR}"/www
+export COLLECTORDEMO_WWW
+
+PYTHONPATH="${COLLECTORDEMO_LIB}"/python:"${PYTHONPATH}"
+export PYTHONPATH
+
+COLLECTORDEMO_PYTHONFLAGS=
+export COLLECTORDEMO_PYTHONFLAGS
+
+COLLECTORDEMO_PYLINTFLAGS="
+    --rcfile=${COLLECTORDEMO_ETC}/pylintrc
+"
+export COLLECTORDEMO_PYLINTFLAGS
+
+COLLECTORDEMO_NOSETESTSFLAGS="
+    --cover-html-dir=${COLLECTORDEMO_HOME}/coverage
+    --cover-package=collectordemo
+    -w ${COLLECTORDEMO_SRC}/python/collectordemo
+"
+export COLLECTORDEMO_NOSETESTSFLAGS
+
+if [ ! -f "${COLLECTORDEMO_HOME}"/setup.cfg ]; then
+    sed -e "s#\@PREFIX\@#${COLLECTORDEMO_HOME}#g;" \
+        -e "s#\@PACKAGE\@#${PACKAGE}#g;" \
+        "${COLLECTORDEMO_HOME}"/setup.cfg.in > "${COLLECTORDEMO_HOME}"/setup.cfg
+fi
+
+# Local Variables:
+# indent-tabs-mode: nil
+# mode: sh
+# End:
+# vim: ai et sw=4 ts=4

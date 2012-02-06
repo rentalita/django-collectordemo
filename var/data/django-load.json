@@ -1,0 +1,18 @@
+[
+    {
+        "fields": {
+            "domain": "localhost:8443",
+            "name": "Collectordemo"
+        },
+        "model": "sites.site",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "domain": "www.collectordemo.com",
+            "name": "Collectordemo"
+        },
+        "model": "sites.site",
+        "pk": 2
+    }
+]
