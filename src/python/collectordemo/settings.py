@@ -10,7 +10,7 @@ ADMINS = (
     ('Crash Reports', 'crash-reports@collectordemo.com'),
 )
 
-DEFAULT_FROM_EMAIL = 'Collectordemo <no-reply@collectordemo.com>'
+DEFAULT_FROM_EMAIL = 'Collector Demo <no-reply@collectordemo.com>'
 
 MANAGERS = ADMINS
 
