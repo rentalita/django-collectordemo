@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-03 18:21+0000\n"
+"POT-Creation-Date: 2012-02-15 19:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/python/layoutdemo/settings.py:135
+#: src/python/collectordemo/settings.py:136
 msgid "a very long time"
 msgstr "un largo tiempo"
 
-#: src/python/layoutdemo/default/templates/default/index.html:8
+#: src/python/collectordemo/default/templates/default/index.html:8
+#: var/www/templates/default/index.html:8
 msgid "Welcome to"
 msgstr "Bienvenido a"
 
 #: var/www/templates/404.html:12 var/www/templates/500.html:12
+#: var/www/templates/default/index.html:65
 msgid "Oops!"
 msgstr "¡Oy!"
 
@@ -52,3 +54,24 @@ msgstr "Regístrate"
 #: var/www/templates/base.html:59
 msgid "Sign In"
 msgstr "Ingresar"
+
+#: var/www/templates/default/index.html:45
+msgid "Your email address"
+msgstr "Su correo electrónico"
+
+#: var/www/templates/default/index.html:54
+msgid "Let's do this!"
+msgstr ""
+
+#: var/www/templates/default/index.html:67
+msgid "Please double-check that you entered a valid email address."
+msgstr ""
+"Por favor, compruebe que haya introducido un correo electrónico válido."
+
+#: var/www/templates/default/index.html:75
+msgid "Thanks."
+msgstr "Gracias."
+
+#: var/www/templates/default/index.html:77
+msgid "We just sent you an important email. Check it out!"
+msgstr "Te hemos enviado un e-mail importante. ¡Échale un vistazo!"

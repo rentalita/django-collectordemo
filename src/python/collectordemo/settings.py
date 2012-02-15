@@ -116,6 +116,7 @@ INSTALLED_APPS = (
     'south',
     'userena',
     'tastypie',
+    'collector',
 )
 
 INSTALLED_APPS += (
@@ -136,6 +137,8 @@ USERENA_REMEMBER_ME_DAYS = (gettext('a very long time'), 1024)
 USERENA_USE_HTTPS = True
 USERENA_USE_MESSAGES = False
 USERENA_WITHOUT_USERNAMES = True
+
+COLLECTOR_SEND_EMAIL = True
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

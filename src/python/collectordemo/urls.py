@@ -15,6 +15,7 @@ urlpatterns = patterns('',
 urlpatterns += patterns('',
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^collector/', include('collector.urls')),
     url(r'', include('collectordemo.default.urls')),
 )
 

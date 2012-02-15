@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block container_content %}
+<div class="container">
+  <div class="hero-unit">
+    <h1>
+      {% trans "Welcome to" %}
+      <a href="{% url collectordemo_index %}">
+        Collector Demo
+      </a>
+    </h1>
+  </div>
+  <style type="text/css">
+    #collector-success { visibility: hidden; }
+    #collector-failure { visibility: hidden; }
+  </style>
+  <script type="text/javascript" language="javascript">
+    $(document).ready(function() {
+      $("#collector-form").submit(function(event) {
+        event.preventDefault();
+
+        $("#collector-success").css("visibility", "hidden");
+        $("#collector-failure").css("visibility", "hidden");
+
+        var $jqxhr = $.post($(this).attr("action"), $(this).serialize(),
+          function() {
+            $("#collector-success").css("visibility", "visible");
+          }
+        );
+
+        $jqxhr.error(function(request, status, error) {
+          $("#collector-failure").css("visibility", "visible");
+        });
+      });
+    });
+  </script>
+  <div class="row">
+    <div class="span8">
+      <form id="collector-form" method="POST" action="collector/">
+        {% csrf_token %}
+        <fieldset>
+          <div class="clearfix">
+            <label for="id_collectorEmail">
+              {% trans "Your email address" %}:
+            </label>
+            <div class="input">
+              <input type="text" name="collectorEmail" id="id_collectorEmail" />
+            </div>
+          </div>
+        </fieldset>
+        <div class="actions">
+          <button class="btn primary" type="submit">
+            {% trans "Let's do this!" %}
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="span8" style="position: relative">
+      <div id="collector-failure" class="alert-message fade in error" data-alert="alert"
+           style="position: absolute"> <!-- TODO: "absolute" causes the div to shorten on the right side -->
+        <a class="close" href="#">&times;</a>
+        <p>
+          <strong>
+            {% trans "Oops!" %}
+          </strong>
+          {% trans "Please double-check that you entered a valid email address." %}
+        </p>
+      </div>
+      <div id="collector-success" class="alert-message fade in success" data-alert="alert"
+           style="position: absolute"> <!-- TODO: "absolute" causes the div to shorten on the right side -->
+        <a class="close" href="#">&times;</a>
+        <p>
+          <strong>
+            {% trans "Thanks." %}
+          </strong>
+          {% trans "We just sent you an important email. Check it out!" %}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
